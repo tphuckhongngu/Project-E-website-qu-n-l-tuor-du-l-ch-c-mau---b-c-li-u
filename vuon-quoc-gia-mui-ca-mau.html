@@ -1,0 +1,251 @@
+<?php
+// chi-tiet.php - Trang chi tiết tour động từ DB
+include 'db.php'; // Kết nối database - đảm bảo db.php tồn tại cùng thư mục
+
+$slug = $_GET['slug'] ?? '';
+if (empty($slug)) {
+    header("Location: index.php");
+    exit;
+}
+
+// Lấy dữ liệu từ bảng destinations
+$stmt = $conn->prepare("SELECT * FROM destinations WHERE slug = ? AND status = 'active'");
+$stmt->bind_param("s", $slug);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($row = $result->fetch_assoc()) {
+    $activities = explode("\n", trim($row['activities'] ?? '')); // Tách hoạt động theo dòng mới
+    $gallery = array_filter(explode(',', $row['images'] ?? '')); // Tách ảnh gallery
+    $highlights = explode("\n", trim($row['highlights'] ?? '')); // Tách lý do nên đến
+} else {
+    // Không tìm thấy → quay về trang chủ
+    header("Location: index.php?error=tour_not_found");
+    exit;
+}
+$stmt->close();
+$conn->close();
+?>
+
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vườn Quốc Gia Mũi Cà Mau - Điểm Đến Sinh Thái Cực Nam Tổ Quốc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #198754; /* Xanh lá rừng ngập mặn */
+            --primary-dark: #146c43;
+            --secondary: #0d6efd; /* Xanh dương biển */
+            --light: #f8f9fa;
+            --dark: #212529;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            background: linear-gradient(rgba(25, 135, 84, 0.65), rgba(25, 135, 84, 0.45)),
+                        url('https://images.unsplash.com/photo-1585503418535-1e5c0e0a0b0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            color: white;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background-attachment: fixed;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+        .hero-content {
+            z-index: 2;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 50%; transform: translateX(-50%);
+            width: 80px; height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .btn-primary-custom {
+            background: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        .btn-primary-custom:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        .gallery-img {
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+        @media (max-width: 768px) {
+            .hero { height: 80vh; min-height: 500px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="display-3 fw-bold mb-3">Vườn Quốc Gia Mũi Cà Mau</h1>
+            <p class="lead fs-4 mb-4">Vùng đất cực Nam thiêng liêng – Nơi rừng ngập mặn ôm trọn biển khơi, biểu tượng bồi tụ và bảo tồn thiên nhiên Việt Nam.</p>
+            <a href="#hoat-dong" class="btn btn-primary-custom btn-lg">Khám Phá Ngay <i class="fas fa-arrow-down ms-2"></i></a>
+        </div>
+    </section>
+
+    <!-- Giới Thiệu -->
+    <section class="section py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Giới Thiệu Chung</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <p>Vườn Quốc gia Mũi Cà Mau là khu bảo tồn thiên nhiên quốc gia quan trọng bậc nhất Việt Nam, nằm tại xã Đất Mũi, huyện Ngọc Hiển, tỉnh Cà Mau – điểm cực Nam của Tổ quốc. Với diện tích hơn 41.800 ha, vườn được thành lập năm 2003 trên nền tảng Khu bảo tồn thiên nhiên Đất Mũi (1986), tọa độ từ 8°32′ đến 8°49′ vĩ Bắc và 104°40′ đến 104°55′ kinh Đông.</p>
+                    <p>Nơi đây là minh chứng sống động cho quá trình bồi tụ phù sa hàng ngàn năm của sông Cửu Long, tạo nên vùng đất mới liên tục mở rộng về phía biển. Hệ sinh thái rừng ngập mặn phong phú không chỉ bảo vệ bờ biển khỏi xói lở, điều hòa khí hậu, lọc nước mà còn là "lá phổi xanh" của đồng bằng sông Cửu Long.</p>
+                    <p>Vườn thuộc Khu dự trữ sinh quyển thế giới Mũi Cà Mau (UNESCO 2009) và Khu Ramsar quốc tế (2013), khẳng định giá trị toàn cầu. Ngoài sinh thái, Mũi Cà Mau còn mang ý nghĩa văn hóa - lịch sử: biểu tượng khát vọng mở cõi, kiên cường của dân tộc. Ngày nay, đây là điểm du lịch sinh thái hàng đầu, thu hút du khách khám phá rừng đước, ngắm hoàng hôn, leo cột mốc quốc gia và trải nghiệm đời sống địa phương.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="https://ik.imagekit.io/tvlk/blog/2023/05/vuon-quoc-gia-mui-ca-mau-1-1024x597.jpg?tr=q-70,c-at_max,w-1000,h-600" alt="Toàn cảnh Vườn Quốc gia Mũi Cà Mau" class="img-fluid rounded shadow">
+                    <p class="caption mt-3 fst-italic">Hoàng hôn huyền ảo nơi đất cuối trời Nam</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lý do nên đến -->
+    <section class="section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Lý Do Nên Đến Mũi Cà Mau</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-tree fa-4x text-success mb-3"></i>
+                        <h4>Hệ Sinh Thái Độc Đáo</h4>
+                        <p>Rừng ngập mặn nguyên sơ, rễ đước chằng chịt, kênh rạch mênh mông – nơi bảo tồn đa dạng sinh học quý hiếm.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-flag fa-4x text-primary mb-3"></i>
+                        <h4>Cột Mốc Quốc Gia</h4>
+                        <p>Leo 245 bậc thang lên đỉnh cột cờ, chạm tay vào điểm cực Nam Tổ quốc – khoảnh khắc thiêng liêng khó quên.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center p-4">
+                        <i class="fas fa-sunset fa-4x text-warning mb-3"></i>
+                        <h4>Hoàng Hôn Tuyệt Đẹp</h4>
+                        <p>Ngắm mặt trời lặn trên biển Tây, nơi đất trời hòa quyện – một trong những cảnh hoàng hôn đẹp nhất Việt Nam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hoạt động du lịch -->
+    <section id="hoat-dong" class="section py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Hoạt Động & Trải Nghiệm</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://thamhiemmekong.com/wp-content/uploads/2020/04/vuonquocgiamuicamau.jpg" class="card-img-top gallery-img" alt="Khám phá rừng">
+                        <div class="card-body">
+                            <h5 class="card-title">Chèo thuyền khám phá rừng ngập mặn</h5>
+                            <p class="card-text">Len lỏi qua kênh rạch, quan sát chim nước, khỉ, rái cá và hệ rễ đước kỳ vĩ.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://ik.imagekit.io/tvlk/blog/2023/05/vuon-quoc-gia-mui-ca-mau-4.jpg?tr=q-70,c-at_max,w-1000,h-600" class="card-img-top gallery-img" alt="Leo cột cờ">
+                        <div class="card-body">
+                            <h5 class="card-title">Tham quan cột mốc cực Nam</h5>
+                            <p class="card-text">Leo tháp quan sát, chụp ảnh check-in và tìm hiểu lịch sử vùng đất mũi.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://mia.vn/media/uploads/blog-du-lich/kham-pha-rung-ngap-man-ca-mau-voi-vo-van-trai-nghiem-thu-vi-03-1662985772.jpg" class="card-img-top gallery-img" alt="Ngắm chim">
+                        <div class="card-body">
+                            <h5 class="card-title">Ngắm chim di cư & hoàng hôn</h5>
+                            <p class="card-text">Hàng trăm loài chim quý hiếm, đặc biệt vào mùa di cư – kết hợp ngắm hoàng hôn lãng mạn.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="https://muicamau.gov.vn/" target="_blank" class="btn btn-primary-custom btn-lg">Đặt Vé & Tour Chính Thức</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">Hình Ảnh Đẹp</h2>
+            <div class="row g-3">
+                <div class="col-md-4"><img src="https://image.plo.vn/Uploaded/2026/gtnngu/2024_10_07/du-lich-tinh-ca-mau-xuyen-rung-mui-ca-mau-16-8222.jpg" class="img-fluid gallery-img shadow" alt="Rừng ngập mặn"></div>
+                <div class="col-md-4"><img src="https://ik.imagekit.io/tvlk/blog/2023/05/vuon-quoc-gia-mui-ca-mau-1-1024x597.jpg?tr=q-70,c-at_max,w-1000,h-600" class="img-fluid gallery-img shadow" alt="Hoàng hôn"></div>
+                <div class="col-md-4"><img src="https://thamhiemmekong.com/wp-content/uploads/2020/04/vuonquocgiamuicamau.jpg" class="img-fluid gallery-img shadow" alt="Sông nước"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-5 text-white">
+        <div class="container">
+            <h5>Vườn Quốc Gia Mũi Cà Mau</h5>
+            <p>© 2026 THTRAVEL - Thông tin tham khảo từ nguồn chính thức & các trang du lịch uy tín.</p>
+            <div class="mt-3">
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-youtube fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

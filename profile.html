@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hồ sơ cá nhân - THTRAVEL</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">           <!-- css chung -->
+    <link rel="stylesheet" href="profile.css">         <!-- css riêng -->
+
+    <style>
+        .bg-gradient-header {
+            background: linear-gradient(135deg, #198754, #00a97f);
+        }
+        .profile-avatar {
+            object-fit: cover;
+            border: 4px solid white;
+        }
+        .stat-box {
+            background: white;
+            border: 1px solid #e0e0e0;
+        }
+        .upload-avatar-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+        }
+        .modal-header {
+            background: #198754;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar (dán nguyên navbar từ index.html hoặc login.html của bạn vào đây) -->
+    <!-- Ví dụ: -->
+    <nav class="navbar navbar-expand-lg fixed-top bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3 text-success" href="index.html">
+                <i class="fas fa-plane"></i> THTRAVEL
+            </a>
+            <!-- ... phần còn lại của navbar ... -->
+        </div>
+    </nav>
+
+    <div class="container my-5 pt-5">
+        <h2 class="text-center mb-5 fw-bold text-success">
+            <i class="fas fa-user-circle me-2"></i>Hồ sơ cá nhân
+        </h2>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-7 col-md-9">
+
+                <!-- Card chính -->
+                <div class="card shadow-lg border-0 rounded-4 overflow-hidden profile-main-card">
+                    <div class="card-header bg-gradient-header text-white text-center py-4">
+                        <h4 class="mb-0">Chào mừng quay lại THTRAVEL!</h4>
+                    </div>
+
+                    <div class="card-body p-4 p-md-5 text-center">
+                        <div class="position-relative d-inline-block mb-4">
+                            <img id="userAvatar" 
+                                 src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800" 
+                                 class="rounded-circle shadow profile-avatar"
+                                 width="160" height="160" alt="Avatar">
+                            <button class="btn btn-sm btn-success position-absolute bottom-0 end-0 rounded-circle p-2 upload-avatar-btn"
+                                    title="Thay đổi ảnh đại diện">
+                                <i class="fas fa-camera"></i>
+                            </button>
+                        </div>
+
+                        <h3 id="userName" class="fw-bold mb-2">Đang tải...</h3>
+                        <p class="text-muted mb-1">Email: <strong id="userEmail">...</strong></p>
+                        <p class="text-muted mb-1">SĐT: <strong id="userPhone">...</strong></p>
+                        <p class="text-muted mb-3">Thành viên từ: <strong id="userJoined">...</strong></p>
+
+                        <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+                            <button class="btn btn-outline-success px-4" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                                <i class="fas fa-edit me-2"></i>Chỉnh sửa thông tin
+                            </button>
+                            <button class="btn btn-outline-primary px-4">
+                                <i class="fas fa-key me-2"></i>Đổi mật khẩu
+                            </button>
+                        </div>
+
+                        <!-- Thống kê nhanh -->
+                        <div class="row g-3 text-center stats-row">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-box p-3 rounded-3">
+                                    <h5 id="tourCount">0</h5>
+                                    <p class="text-muted small mb-0">Tour đã đặt</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-box p-3 rounded-3">
+                                    <h5 id="favoriteCount">0</h5>
+                                    <p class="text-muted small mb-0">Tour yêu thích</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-box p-3 rounded-3">
+                                    <h5 id="points">0</h5>
+                                    <p class="text-muted small mb-0">Điểm tích lũy</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-box p-3 rounded-3">
+                                    <h5>0</h5>
+                                    <p class="text-muted small mb-0">Voucher</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <ul class="nav nav-tabs mt-5 mb-4 justify-content-center" id="profileTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="bookings-tab" data-bs-toggle="tab" data-bs-target="#bookings" type="button" role="tab">
+                            Lịch sử đặt tour
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="favorites-tab" data-bs-toggle="tab" data-bs-target="#favorites" type="button" role="tab">
+                            Tour yêu thích
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="points-tab" data-bs-toggle="tab" data-bs-target="#points" type="button" role="tab">
+                            Điểm & Voucher
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content" id="profileTabContent">
+                    <!-- Tab Lịch sử đặt tour -->
+                    <div class="tab-pane fade show active" id="bookings" role="tabpanel">
+                        <div id="bookingList" class="order-list">
+                            <!-- Đơn hàng sẽ được JS load vào đây -->
+                        </div>
+                    </div>
+
+                    <!-- Tab Tour yêu thích (giả lập) -->
+                    <div class="tab-pane fade" id="favorites" role="tabpanel">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body text-center py-5 text-muted">
+                                <i class="far fa-heart fa-3x mb-3"></i>
+                                <p>Bạn chưa có tour yêu thích nào.</p>
+                                <a href="index.html#tour-noi-bat" class="btn btn-success mt-2">Khám phá tour ngay</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab Điểm & Voucher -->
+                    <div class="tab-pane fade" id="points" role="tabpanel">
+                        <div class="card shadow-sm border-0">
+                            <div class="card-body text-center py-5 text-muted">
+                                <i class="fas fa-gift fa-3x mb-3"></i>
+                                <p>Điểm tích lũy hiện tại: <strong id="pointsTotal">0 điểm</strong></p>
+                                <p class="small">Đặt thêm tour để nhận điểm và đổi voucher hấp dẫn!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Chỉnh sửa thông tin -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="editProfileModalLabel">Chỉnh sửa thông tin</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProfileForm">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">Họ và tên</label>
+                            <input type="text" class="form-control" id="editName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPhone" class="form-label">Số điện thoại</label>
+                            <input type="tel" class="form-control" id="editPhone" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-success" id="saveProfileBtn">Lưu thay đổi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Kiểm tra đăng nhập
+        const user = JSON.parse(localStorage.getItem('thtravel_user'));
+        if (!user) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        // Điền thông tin người dùng
+        document.getElementById('userName').textContent = user.name || "Khách hàng THTRAVEL";
+        document.getElementById('userEmail').textContent = user.email || "Chưa cập nhật";
+        document.getElementById('userPhone').textContent = user.phone || "Chưa cập nhật";
+        document.getElementById('userJoined').textContent = user.joined 
+            ? new Date(user.joined).toLocaleDateString('vi-VN', { day: '2-digit', month: 'long', year: 'numeric' })
+            : "Tháng này";
+
+        // Avatar
+        const avatar = user.avatar || "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800";
+        document.getElementById('userAvatar').src = avatar;
+
+        // Load đơn hàng từ localStorage (từ login giả lập)
+        const orders = JSON.parse(localStorage.getItem('thtravel_orders')) || [];
+        document.getElementById('tourCount').textContent = orders.length;
+        document.getElementById('points').textContent = orders.length * 100; // giả lập 100 điểm/đơn
+
+        // Hiển thị danh sách đơn hàng
+        const bookingList = document.getElementById('bookingList');
+        if (orders.length === 0) {
+            bookingList.innerHTML = `
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center py-5 text-muted">
+                        <i class="far fa-calendar-alt fa-3x mb-3"></i>
+                        <p>Bạn chưa có tour nào được đặt.</p>
+                        <a href="index.html" class="btn btn-success mt-2">Khám phá tour ngay</a>
+                    </div>
+                </div>
+            `;
+        } else {
+            let html = '';
+            orders.forEach(order => {
+                const statusClass = order.status === 'Hoàn thành' ? 'bg-success' : 'bg-warning text-dark';
+                html += `
+                    <div class="order-card mb-4 shadow rounded-4 overflow-hidden">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="${order.image || 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800'}" 
+                                     class="img-fluid h-100 object-fit-cover" alt="${order.tour}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="p-4">
+                                    <div class="d-flex justify-content-between align-items-start mb-3">
+                                        <div>
+                                            <h5 class="fw-bold">${order.tour}</h5>
+                                            <p class="text-muted small mb-1">
+                                                <i class="far fa-calendar-alt me-1"></i> ${order.date}
+                                            </p>
+                                        </div>
+                                        <span class="badge ${statusClass} fs-6 px-3 py-2">${order.status}</span>
+                                    </div>
+                                    <hr class="my-3">
+                                    <div class="row text-center">
+                                        <div class="col-4">
+                                            <p class="fw-bold mb-0">Tổng tiền</p>
+                                            <h6 class="text-success">${order.price}</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="fw-bold mb-0">Mã đơn</p>
+                                            <h6>${order.id}</h6>
+                                        </div>
+                                        <div class="col-4">
+                                            <p class="fw-bold mb-0">Người</p>
+                                            <h6>${order.people || 1}</h6>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4 d-flex gap-2">
+                                        <a href="${order.detailLink || '#'}" class="btn btn-outline-success btn-sm flex-fill">
+                                            <i class="fas fa-eye me-1"></i>Xem chi tiết
+                                        </a>
+                                        ${order.status === 'Chờ xác nhận' ? 
+                                            '<button class="btn btn-outline-danger btn-sm flex-fill"><i class="fas fa-times me-1"></i>Hủy</button>' : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            bookingList.innerHTML = html;
+        }
+
+        // Modal chỉnh sửa
+        document.getElementById('editName').value = user.name || '';
+        document.getElementById('editEmail').value = user.email || '';
+        document.getElementById('editPhone').value = user.phone || '';
+
+        document.getElementById('saveProfileBtn').addEventListener('click', () => {
+            user.name = document.getElementById('editName').value;
+            user.email = document.getElementById('editEmail').value;
+            user.phone = document.getElementById('editPhone').value;
+            localStorage.setItem('thtravel_user', JSON.stringify(user));
+            location.reload(); // reload để cập nhật
+        });
+
+        // Upload avatar (demo - sau này dùng FileReader + backend)
+        document.querySelector('.upload-avatar-btn').addEventListener('click', () => {
+            alert("Chức năng upload ảnh đại diện sẽ sớm được cập nhật!\nHiện tại bạn có thể dùng ảnh từ Unsplash hoặc gửi qua hỗ trợ.");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+/* === Phần .text-overlay: Đẩy 2 chữ xuống dưới === */
+.text-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;          /* Đẩy toàn bộ nội dung (2 chữ + nút) xuống dưới cùng */
+    align-items: center;                /* Giữ căn giữa ngang */
+    color: white;
+    text-align: center;
+    z-index: 5;
+    pointer-events: none;
+    padding-bottom: 15vh;               /* Cách đáy màn hình một khoảng - chỉnh số này để 2 chữ lên/xuống */
+    /* Nếu muốn 2 chữ ở giữa nhưng thấp hơn: dùng justify-content: center; và padding-top: 20vh; */
+}
+@keyframes subtleBlinkColor {
+    0%, 100% { opacity: 0.95; color: #ffffff; }
+    40%      { opacity: 0.4;  color: #a8e6cf; }   /* xanh mint nhẹ */
+    70%      { opacity: 0.4;  color: #ffd3b6; }   /* cam đào */
+}
+
+.subtitle {
+    font-size: clamp(1.4rem, 4.5vw, 2.2rem);
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    
+    opacity: 0;  /* bắt đầu ẩn */
+    
+    animation: 
+        fadeInUp 2.2s ease-out forwards 1,          /* fade vào 1 lần */
+        subtleBlinkColor 5s ease-in-out infinite 1s; /* nhấp nháy lặp vô hạn, delay 1s để chờ fade xong */
+}
+
+/* Giữ nguyên keyframe fadeInUp (nếu chưa có thì thêm vào) */
+@keyframes fadeInUp {
+    to {
+        opacity: 0.95;           /* opacity cao hơn một chút để nhấp nháy rõ hơn */
+        transform: translateY(0);
+    }
+}
+
+/* Keyframe nhấp nháy màu + opacity (đã có sẵn trong code anh) */
+@keyframes subtleBlinkColor {
+    0%, 100% { opacity: 0.95; color: #ffffff; }
+    40%      { opacity: 0.35; color: #a8e6cf; }   /* xanh mint */
+    70%      { opacity: 0.35; color: #ffd3b6; }   /* cam đào */
+}
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%);
+}
+
+.particles::before,
+.particles::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: float 25s infinite linear;
+    opacity: 0.6;
+}
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 70%);
+}
+
+.particles::before,
+.particles::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: float 25s infinite linear;
+    opacity: 0.6;
+}
+
+.particles::before { left: 20%; top: 30%; animation-duration: 18s; animation-delay: -5s; }
+.particles::after  { right: 15%; bottom: 40%; animation-duration: 22s; }
+
+@keyframes float {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(80vw, -80vh); }
+}
+
+.particles::before { left: 20%; top: 30%; animation-duration: 18s; animation-delay: -5s; }
+.particles::after  { right: 15%; bottom: 40%; animation-duration: 22s; }
+
+@keyframes float {
+    0%   { transform: translate(0, 0); }
+    100% { transform: translate(80vw, -80vh); }
+}
+/* === Nút NEXT: Giữ cố định dưới cùng, độc lập với chữ === */
+.next-btn {
+    margin-top: 6.5rem;                   /* Khoảng cách từ subtitle xuống nút - nhỏ vì chữ đã đẩy xuống */
+    margin-bottom: -3vh;                 /* Cách đáy thêm nếu cần */
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.1rem 4rem;
+    font-size: clamp(1.4rem, 4.2vw, 2rem);
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    
+    background: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 50%, #c0c0c0 100%);
+    border: 1px solid #a0a0a0;
+    border-radius: 50px;
+    
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.4),
+        inset 0 0 20px rgba(255,255,255,0.5);
+    
+    pointer-events: auto;
+    transition: all 0.4s ease;
+    z-index: 10;                        /* Nút ở trên nếu cần */
+}
+
+/* Nếu bạn muốn nút FIXED hoàn toàn dưới đáy (không di chuyển theo chữ): */
+.next-btn {
+    /* Uncomment nếu muốn nút dính đáy màn hình, không phụ thuộc .text-overlay */
+    /* position: fixed; */
+    /* bottom: 10vh; */                 /* Cách đáy 10% - chỉnh số này */
+    /* left: 50%; */
+    /* transform: translateX(-50%); */
+    /* margin: 0; */                    /* Bỏ margin nếu fixed */
+}
+
+/* Giữ nguyên shimmer, hover, pulse như code của bạn */
+.next-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.4) 50%,
+        transparent 100%
+    );
+    animation: shimmer 3s infinite linear;
+}
+
+.next-btn:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 
+        0 15px 40px rgba(0,0,0,0.5),
+        inset 0 0 30px rgba(255,255,255,0.7);
+    background: linear-gradient(135deg, #d0d0d0 0%, #f0f0f0 50%, #d0d0d0 100%);
+}
+
+@keyframes shimmer {
+    0%   { left: -100%; }
+    100% { left: 100%; }
+}
+
+.next-btn {
+    animation: softPulse 5s infinite ease-in-out;
+}
+
+@keyframes softPulse {
+    0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,0.4); }
+    50%      { box-shadow: 0 12px 35px rgba(0,0,0,0.5); }
+}

@@ -1,0 +1,1666 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.contact-section {
+    background: #ffffff !important;
+}
+
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+    z-index: -1;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.2rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.7);
+}
+
+
+.hero .lead {
+    font-size: 1.35rem;
+    max-width: 680px;
+}
+/* Hero - Biến thể 1: Sang trọng, tối giản */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+}
+
+.video-overlay {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.65));
+}
+
+.hero-main-title {
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 900;                 /* Extra Bold – rất mạnh & premium */
+    font-size: 5.2rem;                /* to hơn hiện tại */
+    line-height: 1.05;
+    letter-spacing: -1.8px;           /* khoảng cách chữ rộng, sang trọng */
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 8px 30px rgba(0,0,0,0.7);
+}
+
+.hero-slogan {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.7;
+    letter-spacing: 0.4px;
+    opacity: 0.95;
+    max-width: 680px;
+}
+
+.hero-slogan .text-success {
+    font-weight: 600;
+}
+
+/* Dòng chữ nhỏ trên cùng */
+.letter-spacing-1 {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .hero-main-title {
+        font-size: 4.5rem;
+        letter-spacing: -1.5px;
+    }
+    .hero-slogan {
+        font-size: 1.45rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .hero-main-title {
+        font-size: 3.8rem;
+        letter-spacing: -1.2px;
+    }
+    .hero-slogan {
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-main-title {
+        font-size: 2.9rem;
+        letter-spacing: -1px;
+    }
+    .hero-slogan {
+        font-size: 1.2rem;
+    }
+    .hero-main-title br {
+        display: none;   /* trên mobile bỏ xuống dòng */
+    }
+}
+
+.search-box {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    padding: 28px;
+    margin-top: -90px;
+    position: relative;
+    z-index: 10;
+}
+/* Body dùng Inter làm font chính */
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+}
+
+/* Tiêu đề hero quay về Inter (đậm, hiện đại, không in hoa) */
+.hero h1 {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 800;              /* Đậm mạnh, rất hợp tiêu đề lớn */
+    font-size: 4.5rem;             /* Tăng nhẹ cho nổi bật */
+    line-height: 1.05;
+    letter-spacing: -0.5px;        /* Khoảng cách chữ hơi âm để gọn gàng */
+    text-shadow: 0 6px 25px rgba(0,0,0,0.75);
+    text-transform: none;          /* Bỏ in hoa nếu trước đó có */
+}
+
+/* Phần mô tả (lead) cũng dùng Inter cho đồng bộ */
+.hero .lead {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
+}
+
+/* Navbar và nút cũng dùng Inter cho nhất quán */
+.navbar-brand,
+.nav-link,
+.hero .btn-lg {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;  /* hoặc 700 nếu muốn đậm hơn */
+}
+
+/* Responsive giữ nguyên */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+}
+/* INFINITE LOGO MARQUEE - Nhiều logo hơn, khoảng cách hẹp, màu gốc */
+.logo-marquee {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); /* fade edges mỏng */
+}
+
+.marquee-track {
+    display: flex;
+    animation: marquee 25s linear infinite; /* tốc độ chạy, chỉnh số giây nếu muốn nhanh/chậm hơn */
+    will-change: transform;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px; /* chiều rộng mỗi logo, chỉnh nhỏ hơn nếu muốn logo sát nhau hơn */
+    flex-shrink: 0;
+}
+
+.marquee-item img {
+    max-height: 70px;
+    filter: none !important;          /* giữ màu gốc, không xám */
+    opacity: 1;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.marquee-item:hover img {
+    transform: scale(1.2);            /* zoom khi hover */
+    opacity: 1;
+}
+
+.logo-marquee:hover .marquee-track {
+    animation-play-state: paused;     /* dừng chạy khi hover */
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* -50% vì duplicate gấp đôi */
+}
+.blog-card {
+        transition: all 0.3s ease;
+        border: none;
+    }
+    .blog-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12) !important;
+    }
+    .blog-img img {
+        transition: transform 0.6s ease;
+    }
+    .blog-card:hover .blog-img img {
+        transform: scale(1.08);
+    }
+    .blog-overlay {
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+    }
+    .blog-title {
+        font-size: 1.25rem;
+        line-height: 1.4;
+        height: 3.2em; /* Giới hạn 2 dòng */
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .transition-all {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+/* Responsive mobile */
+@media (max-width: 768px) {
+    .marquee-item {
+        min-width: 110px;
+    }
+    .marquee-item img {
+        max-height: 50px;
+    }
+    .marquee-track {
+        animation-duration: 35s; /* chậm hơn trên mobile cho dễ nhìn */
+    }
+}
+
+
+@media (max-width: 576px) {
+    .hero h1 {
+        font-size: 2.8rem;
+        line-height: 1.1;
+    }
+    .hero .lead {
+        font-size: 1.25rem;
+    }
+}
+.card-tour {
+    transition: all 0.4s ease;
+    overflow: hidden;
+    border: none;
+    border-radius: 16px;
+}
+
+.card-tour:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+}
+
+.card-tour:hover img {
+    transform: scale(1.1);
+}
+
+.card-tour img {
+    transition: transform 0.6s ease;
+}
+
+.badge-price {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff6b00;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 992px) {
+    .hero h1 { font-size: 3.2rem; }
+    .search-box { margin-top: -60px; padding: 20px; }
+}
+.badge-price.bg-danger {
+    background: #dc3545 !important; /* Màu đỏ nổi bật cho sale */
+    font-size: 1.1rem;
+    padding: 10px 20px;
+}
+
+.card-tour .badge.bg-success {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+}
+
+/* Làm nút carousel to hơn, đẹp hơn */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.5) !important;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: 60%;
+}
+
+/* Responsive: trên mobile chỉ hiện 1-2 card */
+@media (max-width: 992px) {
+    #saleCarousel .row > div {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+.flash-card {
+    height: 500px;           /* ← chỉnh tổng chiều cao card (ảnh + nội dung) */
+    display: flex;
+    flex-direction: column;
+}
+
+.flash-card .card-img-top {
+    height: px;           /* chiếm phần lớn */
+    object-fit: cover;
+}
+
+.flash-card .card-body {
+    flex: 1;                 /* phần còn lại co giãn */
+}
+
+@media (max-width: 576px) {
+    #saleCarousel .row > div {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+.flash-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 16px !important;
+}
+
+.flash-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(220, 53, 69, 0.2) !important;
+}
+
+.countdown {
+    font-size: 1.1rem;
+    min-width: 100px;
+}
+
+/* Làm countdown đỏ nổi bật */
+.bg-dark.bg-opacity-60 {
+    background: rgba(0,0,0,0.6) !important;
+}
+
+/* Responsive: mobile hiện 1-2 card */
+@media (max-width: 992px) {
+    #flashSaleCarousel .row > div {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    #flashSaleCarousel .row > div {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+/* ĐIỂM ĐẾN YÊU THÍCH - hiệu ứng đẹp */
+.destination-card {
+    transition: all 0.5s ease;
+    cursor: pointer;
+    height: 320px; /* chiều cao cố định cho đồng đều */
+}
+
+.destination-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.destination-card:hover img {
+    transform: scale(1.12);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    opacity: 0.9;
+    transition: all 0.4s ease;
+}
+
+.destination-card:hover .card-overlay {
+    background: linear-gradient(to top, rgba(0,120,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+}
+
+.hover-effect {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 180, 0, 0.15);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.destination-card:hover .hover-effect {
+    opacity: 1;
+}
+
+.destination-card h5 {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.destinations-grid {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease;
+}
+
+.destinations-grid.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tabs style đẹp hơn */
+.nav-pills .nav-link {
+    border-radius: 50px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #198754 !important;
+    color: white !important;
+}
+/* Banner Tết IV - kích thước cố định 420x315 */
+.banner-tet {
+    width: 420px;
+    height: 315px;
+    margin: 0 auto; /* Căn giữa nếu cần */
+}
+
+.banner-tet img {
+    width: 420px !important;
+    height: 315px !important;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.banner-overlay-tet {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(255,140,0,0.5));
+    transition: all 0.4s ease;
+}
+
+.banner-tet:hover .banner-overlay-tet {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(255,69,0,0.7));
+}
+
+.banner-overlay-tet .fw-bold {
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.tiny { font-size: 0.75rem; }
+
+/* Responsive: mobile stack 1 cột, giữ tỷ lệ */
+@media (max-width: 992px) {
+    .banner-tet { width: 100%; max-width: 420px; height: auto; }
+    .banner-tet img { height: auto !important; aspect-ratio: 420/315; }
+}
+
+/* Ẩn nút mũi tên */
+#tetPromoCarousel .carousel-control-prev,
+#tetPromoCarousel .carousel-control-next {
+    display: none !important;
+}
+.flash-card .d-flex.align-items-center i {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.flash-card .badge.bg-danger {
+    font-size: 1rem !important;
+    padding: 0.45rem 1rem !important;
+    line-height: 1.4;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(220,53,69,0.3);
+}
+
+.flash-card .small {
+    font-size: 0.95rem !important;
+}
+.flash-card .badge.bg-danger {
+    font-size: 0.75rem !important;      /* nhỏ như badge mặc định Bootstrap */
+    padding: 0.25rem 0.75rem !important;
+    min-height: 22px;
+    font-weight: 600;
+    border-radius: 0.5rem;              /* bo tròn nhẹ hơn nếu muốn */
+}
+/* Thêm vào style.css */
+.badge-extra-space {
+    margin-left: 5rem !important;  /* ≈ 48px, chỉnh số này tùy ý: 2rem, 4rem... */
+}
+/* Làm chữ "Đặt ngay" to hơn, đậm hơn */
+.card-body .btn-outline-danger {
+    font-size: 1.1rem !important;      /* to hơn mặc định, chỉnh 1.15rem hoặc 1.2rem nếu muốn lớn hơn */
+    font-weight: 700 !important;       /* đậm hơn */
+    padding: 0.6rem 1.5rem !important; /* tăng padding để nút rộng hơn */
+    min-width: 120px;                  /* đảm bảo nút không bị hẹp */
+    transition: all 0.3s ease;
+}
+
+.card-body .btn-outline-danger:hover {
+    font-size: 1.15rem !important;     /* to hơn tí khi hover, tạo hiệu ứng nổi bật */
+}
+
+/* Định nghĩa animation xoay cầu vồng */
+@keyframes rainbow-rotate {
+    0%   { --angle: 0deg; }
+    100% { --angle: 360deg; }
+}
+
+/* Áp dụng cho flash-card */
+.flash-card {
+    position: relative;
+    border: 4px solid transparent;
+    background: white;
+    background-clip: padding-box;
+    border-radius: 16px !important;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Pseudo-element tạo viền rainbow động */
+.badge-extra-space {
+    white-space: nowrap;
+}
+
+.fancy-btn {
+    --color: #00A97F;           /* xanh lá chính */
+    --color2: #0a191f;          /* màu chữ khi hover */
+    
+    position: relative;
+    display: inline-block;
+    padding: 0.9em 2.2em;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color);
+    background: transparent;
+    border: 2px solid var(--color);
+    border-radius: 10px;        /* bo tròn pill như nút cũ */
+    overflow: hidden;
+    transition: color 0.4s ease, border-color 0.4s ease;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Hai mảng trượt từ hai bên - skew nhẹ hơn, không làm chữ méo */
+.fancy-btn::before,
+.fancy-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color);
+    transform: translateX(-101%);           /* ẩn bên trái */
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: -1;
+}
+#flashSaleCarousel + .text-center.mt-5 {
+    margin-top: -25px !important;     /* nổi lên nhẹ */
+    margin-bottom: 80px !important;   /* tạo khoảng trống dưới nút */
+
+}
+.fancy-btn::after {
+    transform: translateX(101%);            /* ẩn bên phải */
+    transition-delay: 0.1s;                 /* trễ nhẹ cho hiệu ứng mượt */
+}
+
+/* Hover: trượt vào giữa */
+.fancy-btn:hover::before {
+    transform: translateX(0);
+}
+
+.fancy-btn:hover::after {
+    transform: translateX(0);
+}
+
+/* Hover: đổi màu chữ + viền */
+.fancy-btn:hover {
+    color: var(--color2);
+    border-color: var(--color2);
+}
+
+/* Active: nhấn nhẹ */
+.fancy-btn:active {
+    transform: scale(0.97);
+    filter: brightness(0.9);
+}
+
+/* Nếu muốn giữ skew nhẹ (nhưng chữ không méo) */
+.fancy-btn:hover::before
+.fancy-btn:hover::after {
+    transform: translateX(0) skewX(10deg);
+}
+
+/* ===== MASONRY GRID – ĐIỂM ĐẾN YÊU THÍCH ===== */
+.destinations-masonry {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    grid-auto-flow: dense;
+}
+/* ĐIỂM ĐẾN YÊU THÍCH - hỗ trợ tùy chỉnh chiều cao & tỷ lệ */
+.destination-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem; /* rounded-4 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: all 0.5s ease;
+    cursor: pointer;
+    height: var(--card-height, 340px);          /* ← chiều cao mặc định, chỉnh ở đây hoặc inline */
+}
+
+.destination-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: var(--aspect-ratio, 4 / 3);   /* ← tỷ lệ mặc định, có thể chỉnh 3/4, 1/1, 16/9... */
+    transition: transform 0.7s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.22);
+}
+
+.destination-card:hover img {
+    transform: scale(1.12);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.12) 60%, transparent 100%);
+    transition: background 0.4s ease;
+    opacity: 0.92;
+}
+
+.destination-card:hover .card-overlay {
+    background: linear-gradient(to top, rgba(0,120,0,0.88) 0%, rgba(0,0,0,0.35) 55%, transparent 100%);
+}
+
+.hover-effect {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 180, 0, 0.12);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.destination-card:hover .hover-effect {
+    opacity: 1;
+}
+
+.destination-card h5 {
+    text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .destination-card {
+        height: calc(var(--card-height, 340px) * 0.94);
+    }
+}
+
+@media (max-width: 576px) {
+    .destination-card {
+        height: auto;
+        aspect-ratio: var(--aspect-ratio, 4 / 3);
+    }
+    .destination-card img {
+        height: auto;
+    }
+}
+.trust-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px;
+    background: #f8f9fa;   /* xám rất nhạt */
+    border-radius: 10px;
+}
+.trust-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.trust-item i {
+    font-size: 28px;
+    color: #0d6efd; /* xanh */
+}
+
+.trust-item strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.trust-item span {
+    font-size: 13px;
+    color: #666;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: #0d1a26 !important; /* Nền xanh đen sang trọng, dễ tùy chỉnh */
+    color: #fff;
+}
+
+.footer h6 {
+    color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 12px; /* Tăng khoảng cách cho dễ đọc */
+}
+
+.footer-list a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.footer-list a:hover {
+    color: #00a97f; /* Màu xanh lá theme */
+    padding-left: 5px;
+    text-shadow: 0 0 8px rgba(0, 169, 127, 0.5); /* Hiệu ứng glow nhẹ khi hover */
+}
+
+.footer-social {
+    width: 40px; /* Lớn hơn tí cho nổi bật */
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff !important; /* Màu trắng icon */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3); /* Bóng nhẹ */
+}
+
+.footer-social:hover {
+    transform: translateY(-3px); /* Nâng lên khi hover */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Màu đặc trưng cho từng mạng xã hội (đã có inline trong HTML, nhưng có thể override ở đây nếu cần) */
+.footer-social.facebook {
+    background: #1877F2;
+}
+
+.footer-social.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.footer-social.tiktok {
+    background: #000000;
+}
+
+.footer-social.youtube {
+    background: #FF0000;
+}
+
+/* Cam kết và icon thanh toán */
+.footer .text-success {
+    color: #00a97f !important; /* Đồng bộ với theme */
+}
+
+.footer .small {
+    font-size: 0.85rem;
+}
+
+/* Responsive: Trên mobile, cột xếp chồng */
+@media (max-width: 768px) {
+    .footer .row {
+        text-align: center;
+    }
+    
+    .footer .d-flex {
+        justify-content: center;
+    }
+    
+    .footer-list li {
+        margin-bottom: 10px;
+    }
+}
+/* Fix footer luôn dính đáy + loại bỏ khoảng trắng thừa */
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Phần nội dung chính co giãn để đẩy footer xuống */
+main {
+    flex: 1 0 auto;
+}
+
+/* Footer không co lại, luôn ở dưới cùng */
+footer {
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+/* Loại bỏ margin/padding thừa ở các section cuối */
+section:last-child,
+div[id$="-container"]:last-child,
+.py-5:last-of-type {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Fix margin âm của search box không ảnh hưởng footer */
+.search-box {
+    margin-bottom: 40px !important; /* thay vì margin-top âm lớn */
+}
+
+/* Tăng khoảng cách giữa phần điểm đến và footer */
+.destinations-section, 
+#favorite-destinations-container,
+.points-to-explore {  /* thay bằng class/id thực tế của phần chứa button */
+    margin-bottom: 80px !important;  /* 80px cách xa, bạn có thể chỉnh 100px, 120px... */
+}
+
+/* Hoặc chỉ riêng button container */
+.explore-all-btn-container {
+    margin-bottom: 100px !important;
+}
+
+/* Nếu dùng Bootstrap spacing responsive */
+@media (min-width: 992px) {
+    .mb-lg-extra {
+        margin-bottom: 120px !important;  /* cách xa hơn trên desktop */
+    }
+}
+
+
+
+
+.nav-hover {
+    position: relative;
+    padding: 0.6rem 1.2rem;       /* tăng padding cho cảm giác "nút" hơn */
+    transition: all 0.35s ease;
+    overflow: hidden;
+    border-radius: 8px;            /* bo nhẹ cho hiện đại */
+    font-weight: 500;              /* base hơi đậm sẵn */
+}
+
+.nav-hover::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(135deg, #0d6efd, #0056b3); /* gradient xanh đậm */
+    transition: height 0.35s ease;
+    z-index: -1;
+}
+
+.nav-hover:hover::before {
+    height: 100%;
+}
+
+.nav-hover:hover {
+    color: white !important;
+    font-weight: 700 !important;   /* chữ đậm hẳn */
+    transform: scale(1.12);        /* phóng to rõ rệt */
+    box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4); /* bóng đậm nổi */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);         /* bóng chữ cho nổi */
+}
+
+.banner-tet img {
+    object-fit: cover;
+    height: 315px !important;
+    width: 420px !important;
+}
+
+.banner-overlay-tet {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5); /* overlay tối để chữ nổi */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.banner-tet:hover .banner-overlay-tet {
+    opacity: 1;
+}
+
+
+/* ===== WHY CHOOSE THTRAVEL SECTION ===== */
+.why-choose-thtravel {
+    padding: 80px 15px;
+    background: linear-gradient(135deg, #f8fbff 0%, #e6f4ff 100%); /* Nền gradient nhẹ, sạch sẽ */
+    position: relative;
+    overflow: hidden;
+}
+
+.why-choose-thtravel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(0,169,127,0.08) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d3b66;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title span {
+    color: #00a97f; /* Màu xanh lá chủ đạo của bạn */
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #00a97f;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+/* Tabs navigation - custom pill style, responsive */
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 2.5rem;
+}
+
+.tab-btn {
+    padding: 12px 24px;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.tab-btn:hover {
+    border-color: #00a97f;
+    color: #00a97f;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,169,127,0.15);
+}
+
+.tab-btn.active {
+    background: #00a97f;
+    color: white;
+    border-color: #00a97f;
+    box-shadow: 0 8px 25px rgba(0,169,127,0.25);
+}
+
+/* Tab content */
+.tab-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.tab-panel {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.tab-panel.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.tab-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.tab-images img {
+    width: 100%;
+    max-width: 380px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: all 0.5s ease;
+}
+
+.tab-images img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,169,127,0.2);
+}
+
+.tab-panel h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #0d3b66;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+}
+
+.tab-panel p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .why-choose-thtravel {
+        padding: 60px 15px;
+    }
+    
+    .section-title {
+        font-size: 2.2rem;
+    }
+    
+    .tab-btn {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .tab-images img {
+        max-width: 320px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    .tabs {
+        gap: 10px;
+    }
+    
+    .tab-btn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .tab-images {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .tab-images img {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 4/3;
+    }
+}
+
+
+/* TRUST MODERN - 4 card ngang */
+.trust-modern {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);     /* 4 cột đều nhau */
+    gap: 24px;                                 /* khoảng cách giữa card */
+    padding: 40px 0;
+    max-width: 1400px;                         /* tổng chiều rộng lớn hơn, thoáng */
+    margin: 0 auto;                            /* căn giữa toàn bộ */
+}
+
+/* Mỗi card */
+.trust-card {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 28px 24px;                        /* tăng padding → card to hơn */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    min-height: 140px;                         /* chiều cao tối thiểu đồng đều */
+}
+
+/* Giữ hiệu ứng hover và viền chạy của bạn (nếu thích) */
+.trust-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,169,127,0.25);
+}
+
+/* Icon to hơn một chút */
+.trust-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #00a97f, #0d6efd);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 26px;
+    flex-shrink: 0;
+}
+
+/* Text */
+.trust-text strong {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0d3b66;
+    display: block;
+}
+
+.trust-text span {
+    font-size: 0.92rem;
+    color: #555;
+}
+
+/* Responsive: điều chỉnh số cột theo màn hình */
+@media (max-width: 1200px) {
+    .trust-modern {
+        grid-template-columns: repeat(2, 1fr);   /* 2 cột trên tablet/iPad */
+        gap: 28px;
+    }
+}
+/* Wrapper cho filter brightness (áp dụng lên toàn trang) */
+body {
+    transition: filter 0.5s ease; /* mượt mà khi chuyển */
+}
+
+/* Class khi giảm sáng */
+body.dimmed {
+    filter: brightness(75%); /* 75% là tối vừa phải, dễ mắt; thử 60-90% tùy thích */
+    /* Nếu muốn tối hơn kiểu dark mode nhẹ: filter: brightness(80%) contrast(110%) saturate(80%); */
+}
+/* Dark mode nâng cao - override mạnh hơn cho các section sáng */
+body.dark-mode {
+    background-color: #000 !important;
+    color: #f0f0f0 !important;
+}
+
+/* Override cụ thể cho 2 section bạn đề cập */
+body.dark-mode section[style*="background: #f0f8ff"],  /* Ưu đãi cực sốc */
+body.dark-mode .bg-light, 
+body.dark-mode .bg-white,
+body.dark-mode .promo-tet,
+body.dark-mode .why-choose-thtravel,
+body.dark-mode .tab-content,
+body.dark-mode .tab-panel,
+body.dark-mode .card,
+body.dark-mode .flash-card,
+body.dark-mode .banner-tet {
+    background-color: #111 !important; /* Đen xám đậm */
+    color: #ddd !important;
+}
+
+/* Text và heading trong section sáng */
+body.dark-mode h2, 
+body.dark-mode h6, 
+body.dark-mode p, 
+body.dark-mode .lead, 
+body.dark-mode .text-muted,
+body.dark-mode .text-danger,
+body.dark-mode .text-success {
+    color: #fff !important; /* Chữ trắng rõ */
+}
+
+/* Cards và banner trong flash sale & tabs */
+body.dark-mode .card-img-top,
+body.dark-mode img {
+    opacity: 0.85 !important; /* Làm mờ nhẹ hình để không lóa */
+    filter: brightness(80%) !important; /* Giảm sáng hình ảnh riêng */
+}
+
+/* Hero video overlay tối hơn để khớp nền đen */
+body.dark-mode .video-overlay {
+    background: rgba(0, 0, 0, 0.85) !important; /* Overlay đen dày hơn */
+}
+
+/* Canvas tuyết/pháo hoa (nếu vẫn sáng quá, tăng z-index hoặc opacity) */
+canvas {  /* Canvas của thư viện Holiday */
+    opacity: 0.9 !important; /* Giảm nhẹ độ sáng canvas nếu cần */
+}
+
+/* Thanh navbar và footer tối hoàn toàn */
+body.dark-mode .navbar,
+body.dark-mode .footer {
+    background: #000 !important;
+}
+body.dark-mode .navbar-brand,
+body.dark-mode .nav-link,
+body.dark-mode .footer * {
+    color: #fff !important;
+}   
+/* Chỉ override dark mode cho section "Tại sao chọn THTravel" */
+body.dark-mode .why-choose-thtravel,
+body.dark-mode .why-choose-thtravel * {
+    background-color: #0f0f0f !important; /* Nền đen đậm */
+    color: #e0e0e0 !important; /* Chữ trắng nhạt */
+}
+
+/* Tabs button (oval) khi dark mode */
+body.dark-mode .why-choose-thtravel .tab-btn {
+    background-color: #222 !important;
+    color: #fff !important;
+    border: 1px solid #444 !important;
+}
+body.dark-mode .why-choose-thtravel .tab-btn.active {
+    background-color: #198754 !important; /* Giữ màu xanh success cho tab active */
+    color: #fff !important;
+}
+
+/* Hình ảnh trong tab-images (làm tối hình để khớp nền đen) */
+body.dark-mode .why-choose-thtravel .tab-images img {
+    filter: brightness(70%) contrast(110%) !important; /* Giảm sáng hình, tăng độ nét */
+    opacity: 0.9 !important;
+    border: 1px solid #333 !important; /* Viền nhẹ để nổi bật */
+}
+
+/* Tiêu đề và text trong section */
+body.dark-mode .why-choose-thtravel h2,
+body.dark-mode .why-choose-thtravel h3,
+body.dark-mode .why-choose-thtravel p {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Bóng chữ cho dễ đọc */
+}
+
+/* Nếu có shadow hoặc border sáng */
+body.dark-mode .why-choose-thtravel .shadow,
+body.dark-mode .why-choose-thtravel .rounded {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.6) !important;
+}
+@media (max-width: 768px) {
+    .trust-modern {
+        grid-template-columns: 1fr;              /* 1 cột trên mobile */
+        gap: 20px;
+        padding: 30px 15px;
+    }
+    
+    .trust-card {
+        padding: 24px 20px;
+    }
+}
+/* DARK MODE - CHỈ PHẦN "TẠI SAO CHỌN THTRAVEL" - override cực mạnh */
+body.dark-mode .why-choose-thtravel {
+    background: #000000 !important;          /* đen tuyệt đối */
+    background-image: none !important;       /* xóa gradient */
+}
+
+body.dark-mode .why-choose-thtravel::before {
+    display: none !important;                /* ẩn pseudo-element radial gradient */
+}
+
+body.dark-mode .why-choose-thtravel,
+body.dark-mode .why-choose-thtravel *,
+body.dark-mode .tab-content,
+body.dark-mode .tab-panel {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+/* Tabs button - tối hoàn toàn */
+body.dark-mode .tabs .tab-btn {
+    background-color: #1a1a1a !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #333333 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
+}
+
+body.dark-mode .tabs .tab-btn:hover {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: #00a97f !important;
+}
+
+body.dark-mode .tabs .tab-btn.active {
+    background-color: #00a97f !important;    /* giữ xanh nổi bật */
+    color: #ffffff !important;
+    border-color: #00a97f !important;
+    box-shadow: 0 8px 25px rgba(0,169,127,0.4) !important;
+}
+
+/* Hình ảnh trong tab-images - tối mạnh hơn để khớp nền đen */
+body.dark-mode .why-choose-thtravel .tab-images img {
+    filter: brightness(50%) contrast(120%) saturate(80%) !important; /* tối rõ rệt */
+    opacity: 0.85 !important;
+    border: 1px solid #2a2a2a !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8) !important;
+}
+
+body.dark-mode .why-choose-thtravel .tab-images img:hover {
+    filter: brightness(65%) contrast(130%) !important; /* hover sáng lên tí */
+}
+
+/* Tiêu đề section-title và h3, p */
+body.dark-mode .why-choose-thtravel .section-title,
+body.dark-mode .why-choose-thtravel h3,
+body.dark-mode .why-choose-thtravel p,
+body.dark-mode .why-choose-thtravel .lead {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9) !important;
+}
+
+/* Đảm bảo không còn nền sáng lọt vào */
+body.dark-mode .why-choose-thtravel .container,
+body.dark-mode .why-choose-thtravel .tabs,
+body.dark-mode .why-choose-thtravel .tab-content {
+    background: transparent !important;
+}
+
+/* Responsive - giữ nguyên nhưng tối */
+@media (max-width: 992px) {
+    body.dark-mode .tab-images img {
+        filter: brightness(45%) !important;
+    }
+}
+.trust-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #33ff33, #00a97f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 20px rgba(51, 255, 51, 0.4);
+    
+    /* Animation float */
+    animation: floatIcon 3.5s ease-in-out infinite;
+}
+/* Banner Tết: Luôn hiện overlay chữ mặc định, không cần hover */
+.banner-overlay-tet {
+    opacity: 1 !important;                    /* Luôn hiện 100% */
+    background: rgba(0, 0, 0, 0.5) !important; /* Nền đen mờ vừa phải để chữ nổi */
+    transition: background 0.4s ease;         /* Giữ hiệu ứng mượt khi hover */
+}
+
+/* Hover: tăng độ tối nhẹ để tạo tương tác */
+.banner-tet:hover .banner-overlay-tet {
+    background: rgba(0, 0, 0, 0.65) !important;
+}
+
+/* Chữ bên trong overlay: trắng rõ, bóng chữ để nổi bật */
+.banner-overlay-tet * {
+    color: #ffffff !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.1) !important; /* Bóng chữ chống lẫn nền */
+}
+
+/* Fix màu cụ thể cho text-warning (vàng), small, tiny */
+.banner-overlay-tet .text-warning,
+.banner-overlay-tet .fw-bold,
+.banner-overlay-tet small,
+.banner-overlay-tet .tiny {
+    color: #ffdd00 !important; /* Vàng nổi bật cho giảm giá */
+    text-shadow: 0 1px 5px rgba(0,0,0,1) !important;
+}
+
+/* Đảm bảo overlay nằm trên ảnh và flex hoạt động tốt */
+.banner-tet {
+    position: relative;
+}
+
+
+.banner-overlay-tet {
+    z-index: 2 !important; /* Nằm trên ảnh */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+/* Search box - hiệu ứng nổi bật */
+.search-box {
+    background: white;
+    border-radius: 20px !important; /* bo tròn hơn */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    padding: 30px;
+    margin-top: -100px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover & focus: nổi lên + glow */
+.search-box:hover,
+.search-box:focus-within {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0,169,127,0.3); /* glow xanh lá */
+}
+
+/* Viền gradient chạy (rainbow neon nhẹ) */
+.search-box::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 22px;
+    background: linear-gradient(45deg, #00a97f, #198754, #ffdd00, #00a97f);
+    background-size: 300% 300%;
+    animation: gradientFlow 8s ease infinite;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+.search-box:hover::before,
+.search-box:focus-within::before {
+    opacity: 1;
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Input & select khi focus */
+.search-box .form-control:focus,
+.search-box .form-select:focus {
+    border-color: #00a97f !important;
+    box-shadow: 0 0 0 0.25rem rgba(0,169,127,0.25) !important;
+}
+
+/* Icon search phóng to khi focus */
+.search-box .input-group-text {
+    transition: all 0.3s ease;
+}
+
+.search-box .form-control:focus + .input-group-text,
+.search-box .form-select:focus + .input-group-text {
+    transform: scale(1.2);
+    color: #00a97f !important;
+}
+/* Search box - nền gradient dịu nhẹ cho toàn bộ thanh */
+.search-box {
+    background: linear-gradient(135deg, #e6f9f0 0%, #f0fff8 100%) !important; /* xanh nhạt dịu, bạn có thể thay màu khác */
+    border-radius: 20px !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    padding: 30px;
+    margin-top: -100px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Input, select và button bên trong: nền trong suốt + đồng bộ gradient cha */
+.search-box .form-control,
+.search-box .form-select,
+.search-box .btn-success {
+    background-color: transparent !important; /* Trong suốt để lộ gradient nền cha */
+    border: 1px solid rgba(0,169,127,0.4) !important; /* Viền xanh nhạt */
+    color: #0d3b66 !important; /* Chữ xanh đậm cho dễ đọc */
+    transition: all 0.3s ease;
+}
+
+/* Placeholder chữ nhạt hơn để nổi bật */
+.search-box .form-control::placeholder,
+.search-box .form-select option {
+    color: #6b9e8a !important; /* Xanh lá nhạt */
+}
+
+/* Khi focus: viền glow + nền nhẹ hơn */
+.search-box .form-control:focus,
+.search-box .form-select:focus {
+    border-color: #00a97f !important;
+    box-shadow: 0 0 0 0.25rem rgba(0,169,127,0.25) !important;
+    background-color: rgba(255,255,255,0.2) !important; /* Nền trắng mờ nhẹ khi focus */
+}
+
+/* Icon kính lúp và calendar icon */
+.search-box .input-group-text {
+    background: transparent !important;
+    border: none !important;
+    color: #00a97f !important;
+    transition: transform 0.3s ease;
+}
+
+.search-box .form-control:focus ~ .input-group-text,
+.search-box .form-select:focus ~ .input-group-text {
+    transform: scale(1.15);
+}
+
+/* Nút "Tìm tour" - đồng bộ màu */
+.search-box .btn-success {
+    background: linear-gradient(90deg, #00a97f, #198754) !important;
+    border: none !important;
+    color: white !important;
+    font-weight: 600;
+}
+
+/* Hover toàn bộ search-box */
+.search-box:hover,
+.search-box:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(0,169,127,0.25);
+}
+
+/* Dark mode: nền tối dịu */
+body.dark-mode .search-box {
+    background: linear-gradient(135deg, #1a2a22 0%, #0f1f18 100%) !important;
+}
+
+body.dark-mode .search-box .form-control,
+body.dark-mode .search-box .form-select,
+body.dark-mode .search-box .btn-success {
+    background-color: rgba(255,255,255,0.05) !important;
+    color: #e0e0e0 !important;
+    border-color: #00a97f !important;
+}
+
+body.dark-mode .search-box .form-control::placeholder {
+    color: #8fd0b0 !important;
+}
+
+/* Keyframes cho float */
+@keyframes floatIcon {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+.trust-card { background: linear-gradient(135deg, #e6f9f0 0%, #f0fff8 100%) !important; /* gradient xanh nhạt, tươi mát */ /* Nếu muốn thử màu khác: - Xanh dương nhạt: linear-gradient(135deg, #e0f7fa 0%, #f0f9ff 100%) - Vàng ấm: linear-gradient(135deg, #fff8e1 0%, #fffdf5 100%) */ border: 1px solid rgba(0,169,127,0.2) !important; /* viền xanh nhạt nhẹ */ border-radius: 16px !important; padding: 20px 15px !important; box-shadow: 0 8px 20px rgba(0,169,127,0.12) !important; /* bóng nhẹ xanh */ transition: all 0.4s ease; backdrop-filter: blur(6px) !important; /* hiệu ứng kính mờ nhẹ, đẹp hơn */ } /* Hover card: nổi lên + glow xanh */ .trust-card:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(0,169,127,0.25) !important; background: linear-gradient(135deg, #f0fff8 0%, #e6f9f0 100%) !important; /* đảo nhẹ gradient khi hover */ } /* Icon bên trong card - giữ màu xanh nổi bật */ .trust-icon { background: linear-gradient(135deg, #00a97f, #198754) !important; color: white !important; box-shadow: 0 6px 15px rgba(0,169,127,0.3) !important; } /* Dark mode: chỉ đổi nền card thành xanh đen dịu */ body.dark-mode .trust-card { background: linear-gradient(135deg, #1a2a22 0%, #0f1f18 100%) !important; border-color: #00a97f !important; box-shadow: 0 8px 20px rgba(0,0,0,0.4) !important; } body.dark-mode .trust-card:hover { background: linear-gradient(135deg, #0f1f18 0%, #1a2a22 100%) !important; }
+/* CONTACT SECTION */
+.contact-section {
+    background: linear-gradient(135deg, #f8fffb 0%, #e6f9f0 100%);
+}
+
+.contact-info {
+    border-left: 5px solid #00a97f;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-form {
+    border: 2px solid rgba(0, 169, 127, 0.15);
+    transition: all 0.4s ease;
+}
+
+.contact-form:hover {
+    box-shadow: 0 20px 50px rgba(0, 169, 127, 0.2);
+    transform: translateY(-8px);
+}
+
+.form-control-lg {
+    border-radius: 12px;
+    border: 1px solid #ced4da;
+    transition: all 0.3s;
+}
+
+.form-control-lg:focus {
+    border-color: #00a97f;
+    box-shadow: 0 0 0 0.25rem rgba(0, 169, 127, 0.25);
+}
+
+.btn-success.rounded-pill {
+    background: linear-gradient(90deg, #00a97f, #198754);
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-success:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 169, 127, 0.4);
+}
